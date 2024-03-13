@@ -27,12 +27,12 @@ def get_meal(meal_name):
     return {meal_name: value}
 
 @app.get("/add/{meal_name}")
-def add_meal(meal_name):
+def add_meal(meal_name: str):
 
     meal_link = meal.get_link_from_meal_name(meal_name)
     if meal_link:
         title, link, image_url, video_url, ingredients, blockquote_text = meal.get_recipe_info(meal_link)
-        title = title.replace(" İçin Malzemeler","").replace("Tarifi","").replace("Nasıl Yapılır?","").strip()
+        title = meal_name.capitalize()
         meal.insert_data([title, link, image_url, video_url, ingredients, blockquote_text])
         return {meal_name: [title,link,image_url,video_url,ingredients,blockquote_text]}
     else:
