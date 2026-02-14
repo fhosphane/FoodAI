@@ -1,5 +1,9 @@
 # FoodAI 
-### My first project 
 
-main.py dosyasını çalıştırmak için:
-`python -m uvicorn main:app --reload`
+## Run (Local)
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload
